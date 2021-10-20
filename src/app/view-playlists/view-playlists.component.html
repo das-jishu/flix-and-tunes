@@ -48,9 +48,12 @@
                 </td>
                 <td width="20%">{{ getArtistNames(track.artists) }}</td>
                 <td style="text-align: right;" width="40%">
-                    <button class="btn btn-sm btn-outline-dark" (click)="openSpotifyURL(track.external_urls.spotify)">Listen on 
+                    <button class="btn btn-sm btn-outline-dark btn-track-desktop" (click)="openSpotifyURL(track.external_urls.spotify)">Listen on 
                         <span><img class="spotify-icon" src="../../assets/spotify-icon.png" alt="Spotify Icon"></span>
                     </button>
+
+                    <button class="btn btn-sm btn-outline-dark btn-track-mobile" (click)="openSpotifyURL(track.external_urls.spotify)"><span><img class="spotify-icon" src="../../assets/spotify-icon.png" alt="Spotify Icon"></span>
+                  </button>
                 </td>
             </tr> 
           </tbody>
@@ -65,23 +68,29 @@
 
     <div *ngIf="selected === 'PLAYLISTS'">
         <div *ngIf="selected === 'PLAYLISTS' && playlists.length !== 0" class="table-container">
-          <table class="table table-hover align-middle">
+          <table style="table-layout: fixed;" class="table table-hover align-middle">
             <tbody>
               <tr *ngFor="let playlist of playlists">
-                  <td width="30%">
+                  <td class="col-sm-4 col-md-4">
                         <div>{{ playlist.name }}</div>
                         <div>
                             <span style="color: rgb(222, 255, 169)" class="totalTracks">{{ playlist.tracks.total }} tracks</span>
                         </div>
                   </td>
-                  <td width="10%" style="text-align: right; word-wrap: break-word;">{{ playlist.owner.display_name }}</td>
-                  <td style="text-align: right;" width="60%">
-                      <button style="margin-right: 5px;" class="btn btn-sm btn-outline-dark" (click)="openSpotifyURL(playlist.external_urls.spotify)">Tracks
+                  <td class="col-sm-4 col-md-3" style="text-align: center;">{{ playlist.owner.display_name }}</td>
+                  <td style="text-align: right;" class="col-sm-4 col-md-5">
+                      <button style="margin-right: 5px;" class="btn btn-sm btn-outline-dark btn-playlist-desktop" (click)="openSpotifyURL(playlist.external_urls.spotify)">Tracks
                       </button>
 
-                      <button class="btn btn-sm btn-outline-dark" (click)="openSpotifyURL(playlist.external_urls.spotify)">Open in 
+                      <button class="btn btn-sm btn-outline-dark btn-playlist-desktop" (click)="openSpotifyURL(playlist.external_urls.spotify)">Open in 
                         <span><img class="spotify-icon" src="../../assets/spotify-icon.png" alt="Spotify Icon"></span>
                       </button>
+
+                      <button style="padding-top: 10px;" class="btn btn-sm btn-outline-dark btn-playlist-mobile" (click)="openSpotifyURL(playlist.external_urls.spotify)"><mat-icon aria-hidden="false" aria-label="Example home icon">queue_music</mat-icon>
+                      </button>
+
+                      <button class="btn btn-sm btn-outline-dark btn-playlist-mobile" (click)="openSpotifyURL(playlist.external_urls.spotify)"><span><img class="spotify-icon" src="../../assets/spotify-icon.png" alt="Spotify Icon"></span>
+                      </button>              
                   </td>
               </tr> 
             </tbody>

@@ -4,7 +4,7 @@
 body {
     background-color: rgb(0, 0, 0);
     margin: 30px 20px 50px 20px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+    font-family: 'Quicksand', sans-serif;
 }
 
 .custom-dialog-container .mat-dialog-container {

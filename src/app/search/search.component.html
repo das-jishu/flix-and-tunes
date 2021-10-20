@@ -10,7 +10,7 @@
   </button>
 
   <div class="input-group">
-    <input class="searchInput" [(ngModel)]="searchTerm" (keyup.enter)="searchFor()" type="text" class="form-control" placeholder="Eg: Shawshank Redemption . . . ." aria-label="search" aria-describedby="basic-addon2">
+    <input class="searchInput" [(ngModel)]="searchTerm" (keyup.enter)="searchFor()" type="text" class="form-control" placeholder="Eg: Inception . . . ." aria-label="search" aria-describedby="basic-addon2">
 
     <div class="input-group-append">
       <button class="btn btn-danger" type="button" (click)="clear()">
@@ -67,16 +67,26 @@
       </table>
     </div>
     <div>
-      <span class="pageDetails">{{ currentPage }} / {{ totalPages }}</span>
+      <span class="pageDetails">
+        {{ currentPage }} / {{ totalPages }}
+      </span>
 
       <div class="text-center">
-        <button type="button" class="btn btn-sm btn-outline-primary" [class.disabled]="currentPage == 1" (click)="changePage('FIRST')">First</button>
-        <button type="button" class="btn btn-sm btn-outline-primary" [class.disabled]="currentPage == 1"
-        (click)="changePage('PREVIOUS')">Previous</button>
-        <button type="button" class="btn btn-sm btn-outline-warning" [class.disabled]="currentPage == totalPages"
-        (click)="changePage('NEXT')">Next</button>
-        <button type="button" class="btn btn-sm btn-outline-warning" [class.disabled]="currentPage == totalPages"
-        (click)="changePage('LAST')">Last</button>
+        <button type="button" class="btn btn-sm btn-outline-primary" style="padding-top: 8px  !important" [class.disabled]="currentPage == 1" (click)="changePage('FIRST')">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">first_page</mat-icon>
+        </button>
+        <button type="button" class="btn btn-sm btn-outline-primary" style="padding-top: 8px  !important" style="padding-top: 8px  !important" [class.disabled]="currentPage == 1"
+        (click)="changePage('PREVIOUS')">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">keyboard_arrow_left</mat-icon>
+        </button>
+        <button type="button" class="btn btn-sm btn-outline-warning" style="padding-top: 8px  !important" [class.disabled]="currentPage == totalPages"
+        (click)="changePage('NEXT')">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">keyboard_arrow_right</mat-icon>
+        </button>
+        <button type="button" class="btn btn-sm btn-outline-warning" style="padding-top: 8px  !important" [class.disabled]="currentPage == totalPages"
+        (click)="changePage('LAST')">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">last_page</mat-icon>
+        </button>
       </div>
     </div>
   </div>

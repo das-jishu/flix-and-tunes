@@ -1,6 +1,7 @@
 
 * {
     color: whitesmoke;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .credits {
@@ -27,7 +28,6 @@
 
 .name {
     color: lightgrey;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .text {
@@ -86,7 +86,6 @@
     margin-top: 80px;
     margin-bottom: 40px;
     font-size: 26px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
     color: grey;
 }

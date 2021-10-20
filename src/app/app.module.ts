@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +32,7 @@ import { CreditsComponent } from './credits/credits.component';
     BrowserAnimationsModule,
     MatTooltipModule,
     MatDialogModule,
+    MatIconModule,
     RouterModule.forRoot([
       { path: 'viewPlaylist/:title', component: ViewPlaylistsComponent },
       { path: 'credits', component: CreditsComponent },

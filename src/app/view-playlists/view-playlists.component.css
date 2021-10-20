@@ -1,6 +1,7 @@
 
 * {
-    color: whitesmoke
+    color: whitesmoke;
+    word-wrap: break-word;
 }
 
 .heading {
@@ -81,4 +82,44 @@ tr {
 .back {
     margin-top: -3px;
     margin-right: 20px;
+}
+
+@media (min-width:479px) {
+    .btn-track-desktop {
+        display: inline-block;
+    }
+
+    .btn-track-mobile {
+        display: none;
+    }
+}
+
+@media (max-width:479px) {
+    .btn-track-desktop {
+        display: none;
+    }
+
+    .btn-track-mobile {
+        display: inline-block;
+    }
+}
+
+@media (min-width: 768px) {
+    .btn-playlist-desktop {
+        display: inline-block;
+    }
+
+    .btn-playlist-mobile {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .btn-playlist-desktop {
+        display: none;
+    }
+
+    .btn-playlist-mobile {
+        display: inline-block;
+    }
 }
