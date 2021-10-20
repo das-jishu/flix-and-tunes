@@ -1,0 +1,42 @@
+<div class="container">
+    <p class="credits">CREDITS</p>
+
+    <button class="btn btn-sm btn-outline-warning credits-button button-desktop" (click)="goToHome()">BACK</button>
+    <button class="btn btn-sm-btn-outline-warning credits-button button-mobile" (click)="goToHome()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" style="margin-top: -6px;" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+          </svg>
+    </button>
+
+    <div class="text-center">
+        <img class="picsubham" src="../../../assets/IMG-subham.jpg" alt="Subham Das">
+        <br>
+        <div class="name">
+           Subham Das
+           <br>
+           <span style="font-size: 13.5px;">das.jishu25@gmail.com</span>
+        </div>
+
+        <div class="btn-group">
+           <img matTooltip="Twitter" (click)="contactme('twitter')" src="../../../assets/twitter.png" alt="">
+           <img matTooltip="Github" (click)="contactme('github')" src="../../../assets/github-light.png" alt="">
+           <img matTooltip="Facebook" (click)="contactme('facebook')" id="facebook" src="../../../assets/facebook.png" alt="">
+           <img matTooltip="LinkedIn" (click)="contactme('linkedin')" id="linkedin" src="../../../assets/linkedin.png" alt="">
+           <img class="img-mail" matTooltip="Mail" (click)="contactme('mail')" id="gmail" src="../../../assets/gmail.png"
+              alt="">
+        </div>
+    </div>
+
+    <p class="attribution">ATTRIBUTIONS</p>
+
+    <div class='container' style='text-align: center;'>
+        <img style='height: 22px; width: 150px; margin-top: 15px; margin-left: 15px;' src='./../../assets/icon-tmdb.png'>
+        <img style='height: 150px; width: 250px; margin-top: 15px;' src='./../../assets/spotify-attribution.png'>
+        <span class='attribute'><br>This website uses the TMDb API but is not endorsed or certified by TMDb.</span> 
+    </div>  
+        
+    <div>
+        <p class="footer">&copy; {{ getCurrentDate() }} Copyright. All rights reserved.</p>
+    </div>
+</div>

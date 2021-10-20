@@ -1,0 +1,100 @@
+
+.main {
+    padding: 0;
+    margin: 0;
+    color: rgb(189, 189, 189);
+    position: relative;
+    /* border: 1px solid blue; */
+}
+
+.parent {
+    display: flex;
+    justify-content: space-around;
+    height: 580px;
+    /* border: 1px solid black; */
+}
+
+.child {
+    flex: 50%;
+    /* position: relative; */
+}
+
+.movie-poster {
+    margin: 0 auto;
+    /* height: 400px;
+    width: 600px; */
+    object-fit: fill;
+    /* border: 1px solid red; */
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+}
+
+.movie-poster img {
+    height: 580px;
+    width: 100%;
+}
+
+.details::-webkit-scrollbar { width: 0 !important }
+
+.details {
+    padding: 10px 10px;
+    overflow: scroll;
+    -ms-overflow-style: none;
+}
+
+.title {
+    font-size: 24px;
+    font-family: monospace;
+    line-height: 90%;
+}
+
+.adult {
+    border: 1px solid rgb(243, 255, 132);
+    color: rgb(243, 255, 132);
+    margin-right: 5px;
+    padding: 0px 2px 1px 2px;
+    border-radius: 2px;
+}
+
+.properties {
+    font-size: 12.5px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.overview {
+    font-style: italic;
+    margin-top: 5px;
+}
+
+.vote-count {
+    margin-bottom: 10px;
+}
+
+.vote {
+    font-size: 13.5px;
+    margin-left: 5px;
+}
+
+.findplaylists {
+    position: absolute;
+    bottom: 20px;
+    left: 20%;
+    filter: none;
+    z-index: 1000;
+
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+}
+
+@media (max-width:479px) {
+    .findplaylists {
+        left: 10%;
+    }
+}

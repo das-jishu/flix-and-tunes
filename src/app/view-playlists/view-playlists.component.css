@@ -1,0 +1,84 @@
+
+* {
+    color: whitesmoke
+}
+
+.heading {
+    font-size: 20px;
+    border: 0.5px solid grey;
+    border-radius: 10px;
+    margin: 20px 20px;
+    padding: 5px 10px;
+    font-family: monospace;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.table-container {
+    margin-top: 20px;
+}
+
+.notFound {
+    font-size: 25px;
+    text-align: center;
+    margin-top: 100px;
+    font-family: monospace;
+}
+
+.spotify-icon {
+    width: 18px;
+    height: 18px;
+    margin-left: 2px;
+    margin-top: -4px;
+}
+
+.explicitCategory {
+    margin-right: 8px;
+}
+
+.duration {
+    color: rgb(222, 255, 169);
+    font-size: 13.5px;
+}
+
+.totalTracks {
+    color: rgb(83, 83, 83);
+    font-size: 13.5px;
+}
+
+.table {
+    /* box-shadow:
+  0 2.8px 2.2px rgb(56, 56, 56),
+  0 6.7px 5.3px rgb(34, 34, 34),
+  0 12.5px 10px rgba(41, 41, 41, 0.836),
+  0 22.3px 17.9px rgb(36, 36, 36),
+  0 41.8px 35.4px rgb(61, 61, 61),
+  0 20px 90px rgb(49, 49, 49) */
+  -webkit-box-shadow: -4px 2px 45px -8px rgba(87,87,87,1);
+-moz-box-shadow: -4px 2px 45px -8px rgba(87,87,87,1);
+box-shadow: -4px 2px 45px -8px rgba(87,87,87,1);
+}
+
+.table-hover tbody tr td {
+    background-color: rgb(34, 34, 34);
+    transition: all 0.5s;  
+} 
+
+tr {
+    border: 0.5px solid rgb(48, 48, 48);
+}
+
+.table-hover tbody tr:hover td {
+    background: rgb(61, 61, 61);
+}
+
+.not-found-image {
+    height: 260px;
+    width: 240px;
+    margin-top: 20px;
+}
+
+.back {
+    margin-top: -3px;
+    margin-right: 20px;
+}

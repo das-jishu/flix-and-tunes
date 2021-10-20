@@ -1,0 +1,90 @@
+<div class="container">
+  <div>
+    <p class="headingMain">FLIX AND TUNES</p>
+    <p class="description">Find movies. Find their tracks and playlists. Add them to your playlist and enjoy!</p>
+  </div>
+
+  <button class="btn btn-sm btn-outline-warning credits-button button-desktop" (click)="gotoCredits()">CREDITS</button>
+  <button class="btn btn-sm-btn-outline-warning credits-button button-mobile" (click)="gotoCredits()">
+    &copy;
+  </button>
+
+  <div class="input-group">
+    <input class="searchInput" [(ngModel)]="searchTerm" (keyup.enter)="searchFor()" type="text" class="form-control" placeholder="Eg: Shawshank Redemption . . . ." aria-label="search" aria-describedby="basic-addon2">
+
+    <div class="input-group-append">
+      <button class="btn btn-danger" type="button" (click)="clear()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 18 18">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+        </svg>
+      </button>
+    </div>
+  
+    <div class="input-group-append">
+      <button class="btn btn-success" type="button" (click)="searchFor()">Search</button>
+    </div>
+  </div>
+
+  <div *ngIf="searchResult !== '' && this.movies !== undefined && this.movies.length > 0">
+    <div class="table-container">
+      <table class="table table-striped  table-hover align-middle">
+        <!-- <thead>
+          <tr>
+            <th class="text-center" scope="col">Movie</th>
+            <th class="text-center" scope="col">Genre</th>
+          </tr>
+        </thead> -->
+        <tbody>
+          <tr *ngFor="let movie of movies" (click)="viewMovieDetails(movie)">
+              <td width="60%">
+                    <div>{{ movie.title }}</div>
+                    <div>
+                      <span 
+                      class="adultCategory"
+                      matTooltip="18+: A-rated"
+                      *ngIf="movie.adult == true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="rgb(255, 169, 169)" class="bi bi-exclamation-octagon" viewBox="0 0 16 16">
+                          <path d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"/>
+                          <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                        </svg>
+                      </span>
+                      <span
+                      *ngIf="movie.original_language != ''" 
+                      class="language"
+                      >{{ movie.original_language | uppercase}}</span>
+                      <span *ngIf="movie.release_date !== ''" class="releaseDate">
+                        {{ movie.release_date | date:"mediumDate" }}
+                      </span>
+                      <span *ngIf="movie.release_date === ''" class="releaseDate">
+                        --
+                      </span>
+                    </div>
+              </td>
+              <td width="40%">{{ getGenreNames(movie.genre_ids) }}</td>
+          </tr> 
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <span class="pageDetails">{{ currentPage }} / {{ totalPages }}</span>
+
+      <div class="text-center">
+        <button type="button" class="btn btn-sm btn-outline-primary" [class.disabled]="currentPage == 1" (click)="changePage('FIRST')">First</button>
+        <button type="button" class="btn btn-sm btn-outline-primary" [class.disabled]="currentPage == 1"
+        (click)="changePage('PREVIOUS')">Previous</button>
+        <button type="button" class="btn btn-sm btn-outline-warning" [class.disabled]="currentPage == totalPages"
+        (click)="changePage('NEXT')">Next</button>
+        <button type="button" class="btn btn-sm btn-outline-warning" [class.disabled]="currentPage == totalPages"
+        (click)="changePage('LAST')">Last</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cc" *ngIf="searchResult === '' || this.movies === undefined || this.movies.length === 0">
+    <div class="no-query">
+      <img class="no-query-image" src="../../assets/invalid-query.png" alt="">
+    </div>
+    <p class="no-query-text">Please enter some valid words for us to search!</p>
+  </div>
+</div>
