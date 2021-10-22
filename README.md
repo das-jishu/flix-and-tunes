@@ -35,7 +35,7 @@ Thank you for reading this far! 💜
 
 Please open an issue to report any bugs or for adding any feature. Follow these steps to make changes and open a pull request:
 
-1.  Forking the Repository.
+1.  Fork the Repository.
 2.  Clone your new fork locally.
 3.  Track the original repository as a remote of the fork.
 4.  Create a new branch for your changes.
