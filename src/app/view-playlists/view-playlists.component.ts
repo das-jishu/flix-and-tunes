@@ -16,6 +16,7 @@ export class ViewPlaylistsComponent implements OnInit {
   tracks: Array<any> = []
   tracksRawData: any = {}
   selected:string = "TRACKS"
+  isLoading: boolean = true;
 
   constructor(private route: ActivatedRoute, private router: Router, private playlistService: PlaylistService) { 
     this.route.params.subscribe( param => {
@@ -35,6 +36,7 @@ export class ViewPlaylistsComponent implements OnInit {
           this.tracks = data.tracks.items
           this.playlistsRawData = data.playlists
           this.tracksRawData = data.tracks
+          this.isLoading = false;
         })
       });
     })

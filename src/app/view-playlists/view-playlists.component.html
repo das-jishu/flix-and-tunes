@@ -1,113 +1,119 @@
-<div class="container">
-    <div>
-        <p class="heading">
-            <span *ngIf="selected === 'TRACKS'">TRACKS</span>
-            <span *ngIf="selected === 'PLAYLISTS'">PLAYLISTS</span>
-            RELATED TO '<span style="color: rgb(161, 99, 219);">{{ queryString }}</span>'
-        </p>
-    </div>
+<spinner *ngIf="isLoading; else loaded"></spinner>
 
-    <button class="btn btn-sm btn-success back" (click)="goToHome()">
-      <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: -4px; margin-right: 5px;" width="14" height="14" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
-        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
-      </svg>
-       BACK
-    </button>
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="tracks" checked (click)="selected = 'TRACKS'">
-        <label class="form-check-label" for="inlineRadio1">Tracks</label>
-    </div>
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="playlists" (click)="selected = 'PLAYLISTS'">
-        <label class="form-check-label" for="inlineRadio2">Playlists</label>
-    </div>
+<ng-template #loaded>
 
-    <div *ngIf="selected === 'TRACKS'">
-      <div *ngIf="selected === 'TRACKS' && tracks.length !== 0" class="table-container">
-        <table class="table table-hover align-middle">
-          <tbody>
-            <tr *ngFor="let track of tracks" class="trow">
-                <td width="40%">
-                      <div>{{ track.name }}</div>
-                      <div>
-                        <span 
-                        class="explicitCategory"
-                        matTooltip="Explicit Content"
-                        *ngIf="track.explicit == true">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-exclamation-octagon" viewBox="0 0 16 16">
-                            <path d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"/>
-                            <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
-                          </svg>
-                        </span>
-                        <span
-                        *ngIf="track.duration_ms != ''" 
-                        class="duration"
-                        matTooltip="Duration"
-                        >{{ getDuration(track.duration_ms) }}</span>
-                      </div>
-                </td>
-                <td width="20%">{{ getArtistNames(track.artists) }}</td>
-                <td style="text-align: right;" width="40%">
-                    <button class="btn btn-sm btn-outline-dark btn-track-desktop" (click)="openSpotifyURL(track.external_urls.spotify)">Listen on 
-                        <span><img class="spotify-icon" src="../../assets/spotify-icon.png" alt="Spotify Icon"></span>
-                    </button>
-
-                    <button class="btn btn-sm btn-outline-dark btn-track-mobile" (click)="openSpotifyURL(track.external_urls.spotify)"><span><img class="spotify-icon" src="../../assets/spotify-icon.png" alt="Spotify Icon"></span>
-                  </button>
-                </td>
-            </tr> 
-          </tbody>
-        </table>
+  <div class="container">
+      <div>
+          <p class="heading">
+              <span *ngIf="selected === 'TRACKS'">TRACKS</span>
+              <span *ngIf="selected === 'PLAYLISTS'">PLAYLISTS</span>
+              RELATED TO '<span style="color: rgb(161, 99, 219);">{{ queryString }}</span>'
+          </p>
       </div>
-      <div *ngIf="selected === 'TRACKS' && tracks.length === 0" class="notFound">
-        No tracks found for this search term!
-        <br>
-        <img class="not-found-image" src="../../assets/icons8-sad-96.png" alt="">
-      </div>
-    </div>
 
-    <div *ngIf="selected === 'PLAYLISTS'">
-        <div *ngIf="selected === 'PLAYLISTS' && playlists.length !== 0" class="table-container">
-          <table style="table-layout: fixed;" class="table table-hover align-middle">
+      <button class="btn btn-sm btn-success back" (click)="goToHome()">
+        <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: -4px; margin-right: 5px;" width="14" height="14" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+          <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+        </svg>
+        BACK
+      </button>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="tracks" checked (click)="selected = 'TRACKS'">
+          <label class="form-check-label" for="inlineRadio1">Tracks</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="playlists" (click)="selected = 'PLAYLISTS'">
+          <label class="form-check-label" for="inlineRadio2">Playlists</label>
+      </div>
+
+      <div *ngIf="selected === 'TRACKS'">
+        <div *ngIf="selected === 'TRACKS' && tracks.length !== 0" class="table-container">
+          <table class="table table-hover align-middle">
             <tbody>
-              <tr *ngFor="let playlist of playlists">
-                  <td class="col-sm-4 col-md-4">
-                        <div>{{ playlist.name }}</div>
+              <tr *ngFor="let track of tracks" class="trow">
+                  <td width="40%">
+                        <div>{{ track.name }}</div>
                         <div>
-                            <span style="color: rgb(222, 255, 169)" class="totalTracks">{{ playlist.tracks.total }} tracks</span>
+                          <span 
+                          class="explicitCategory"
+                          matTooltip="Explicit Content"
+                          *ngIf="track.explicit == true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-exclamation-octagon" viewBox="0 0 16 16">
+                              <path d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"/>
+                              <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                            </svg>
+                          </span>
+                          <span
+                          *ngIf="track.duration_ms != ''" 
+                          class="duration"
+                          matTooltip="Duration"
+                          >{{ getDuration(track.duration_ms) }}</span>
                         </div>
                   </td>
-                  <td class="col-sm-4 col-md-3" style="text-align: center;">{{ playlist.owner.display_name }}</td>
-                  <td style="text-align: right;" class="col-sm-4 col-md-5">
-                      <button style="margin-right: 5px;" class="btn btn-sm btn-outline-dark btn-playlist-desktop" (click)="openSpotifyURL(playlist.external_urls.spotify)">Tracks
+                  <td width="20%">{{ getArtistNames(track.artists) }}</td>
+                  <td style="text-align: right;" width="40%">
+                      <button class="btn btn-sm btn-outline-dark btn-track-desktop" (click)="openSpotifyURL(track.external_urls.spotify)">Listen on 
+                          <span><img class="spotify-icon" src="../../assets/spotify-icon.png" alt="Spotify Icon"></span>
                       </button>
 
-                      <button class="btn btn-sm btn-outline-dark btn-playlist-desktop" (click)="openSpotifyURL(playlist.external_urls.spotify)">Open in 
-                        <span><img class="spotify-icon" src="../../assets/spotify-icon.png" alt="Spotify Icon"></span>
-                      </button>
-
-                      <button style="padding-top: 10px;" class="btn btn-sm btn-outline-dark btn-playlist-mobile" (click)="openSpotifyURL(playlist.external_urls.spotify)"><mat-icon aria-hidden="false" aria-label="Example home icon">queue_music</mat-icon>
-                      </button>
-
-                      <button class="btn btn-sm btn-outline-dark btn-playlist-mobile" (click)="openSpotifyURL(playlist.external_urls.spotify)"><span><img class="spotify-icon" src="../../assets/spotify-icon.png" alt="Spotify Icon"></span>
-                      </button>              
+                      <button class="btn btn-sm btn-outline-dark btn-track-mobile" (click)="openSpotifyURL(track.external_urls.spotify)"><span><img class="spotify-icon" src="../../assets/spotify-icon.png" alt="Spotify Icon"></span>
+                    </button>
                   </td>
               </tr> 
             </tbody>
           </table>
         </div>
-        <div *ngIf="selected === 'PLAYLISTS' && playlists.length === 0" class="notFound">
-            No playlists found for this search term!
-            <br>
-            <img class="not-found-image" src="../../assets/icons8-sad-96.png" alt="">
+        <div *ngIf="selected === 'TRACKS' && tracks.length === 0" class="notFound">
+          No tracks found for this search term!
+          <br>
+          <img class="not-found-image" src="../../assets/icons8-sad-96.png" alt="">
         </div>
-    </div>
-    
-    <div *ngIf="(selected === 'TRACKS' && tracks.length !== 0) || (selected === 'PLAYLISTS' && playlists.length !== 0)"
-    class="buttons text-center">
-      <button style="margin-right: 15px;" class="btn btn-sm btn-primary" [class.disabled]="checkIfDisabled('PREVIOUS')" (click)="changePage('PREVIOUS')">PREVIOUS</button>
-      <button style="color: black;" class="btn btn-sm btn-warning" [class.disabled]="checkIfDisabled('NEXT')" (click)="changePage('NEXT')">NEXT</button>
+      </div>
+
+      <div *ngIf="selected === 'PLAYLISTS'">
+          <div *ngIf="selected === 'PLAYLISTS' && playlists.length !== 0" class="table-container">
+            <table style="table-layout: fixed;" class="table table-hover align-middle">
+              <tbody>
+                <tr *ngFor="let playlist of playlists">
+                    <td class="col-sm-4 col-md-4">
+                          <div>{{ playlist.name }}</div>
+                          <div>
+                              <span style="color: rgb(222, 255, 169)" class="totalTracks">{{ playlist.tracks.total }} tracks</span>
+                          </div>
+                    </td>
+                    <td class="col-sm-4 col-md-3" style="text-align: center;">{{ playlist.owner.display_name }}</td>
+                    <td style="text-align: right;" class="col-sm-4 col-md-5">
+                        <button style="margin-right: 5px;" class="btn btn-sm btn-outline-dark btn-playlist-desktop" (click)="openSpotifyURL(playlist.external_urls.spotify)">Tracks
+                        </button>
+
+                        <button class="btn btn-sm btn-outline-dark btn-playlist-desktop" (click)="openSpotifyURL(playlist.external_urls.spotify)">Open in 
+                          <span><img class="spotify-icon" src="../../assets/spotify-icon.png" alt="Spotify Icon"></span>
+                        </button>
+
+                        <button style="padding-top: 10px;" class="btn btn-sm btn-outline-dark btn-playlist-mobile" (click)="openSpotifyURL(playlist.external_urls.spotify)"><mat-icon aria-hidden="false" aria-label="Example home icon">queue_music</mat-icon>
+                        </button>
+
+                        <button class="btn btn-sm btn-outline-dark btn-playlist-mobile" (click)="openSpotifyURL(playlist.external_urls.spotify)"><span><img class="spotify-icon" src="../../assets/spotify-icon.png" alt="Spotify Icon"></span>
+                        </button>              
+                    </td>
+                </tr> 
+              </tbody>
+            </table>
+          </div>
+          <div *ngIf="selected === 'PLAYLISTS' && playlists.length === 0" class="notFound">
+              No playlists found for this search term!
+              <br>
+              <img class="not-found-image" src="../../assets/icons8-sad-96.png" alt="">
+          </div>
+      </div>
+      
+      <div *ngIf="(selected === 'TRACKS' && tracks.length !== 0) || (selected === 'PLAYLISTS' && playlists.length !== 0)"
+      class="buttons text-center">
+        <button style="margin-right: 15px;" class="btn btn-sm btn-primary" [class.disabled]="checkIfDisabled('PREVIOUS')" (click)="changePage('PREVIOUS')">PREVIOUS</button>
+        <button style="color: black;" class="btn btn-sm btn-warning" [class.disabled]="checkIfDisabled('NEXT')" (click)="changePage('NEXT')">NEXT</button>
+      </div>
+
     </div>
 
-  </div>
+</ng-template>
   

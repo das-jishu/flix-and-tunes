@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { ViewPlaylistsComponent } from './view-playlists/view-playlists.component';
 import { CreditsComponent } from './credits/credits.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CreditsComponent } from './credits/credits.component';
     SearchComponent,
     MovieDetailsComponent,
     ViewPlaylistsComponent,
-    CreditsComponent
+    CreditsComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
