@@ -11,11 +11,11 @@ A one-stop service where you can search for movies, find all tracks and playlist
 [![Generic badge](https://img.shields.io/badge/framework-angular-blue.svg)](https://angular.io/)
 [![Generic badge](https://img.shields.io/badge/hosting-firebase-green.svg)](https://firebase.google.com/)
 
-<br />
+<br>
 
-## ⭐ ABOUT US
+### ⭐ ABOUT US
 
-Remember the time when you were so engrossed into that particular tune or background music from your favorite movie but just couldn't find the name of the song after countless searches on Google? [Flix and Tunes](https://flix-and-tunes.web.app) can help you with that. It is a place to help facilitate your search for tracks and playlists specifically related to movies. You don't have to type out the name of the whole movie as well. I mean, who wants to type out **'Harry Potter and the Deathly Hallows: Part 2'** just to find out a track? 😆 Here, you can just type out a word or two, find out your movie from the list and head straight to the tunes.
+Remember the time when you were so engrossed into that particular tune or background music from your favorite movie but just couldn't find the name of the song after countless searches on Google? **[Flix and Tunes](https://flix-and-tunes.web.app)** can help you with that. It is a place to help facilitate your search for tracks and playlists specifically related to movies. You don't have to type out the name of the whole movie as well. I mean, who wants to type out **'Harry Potter and the Deathly Hallows: Part 2'** just to find out a track? 😆 Here, you can just type out a word or two, find out your movie from the list and head straight to the tunes.
 
 <br />
 
